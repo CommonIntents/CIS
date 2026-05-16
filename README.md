@@ -227,4 +227,12 @@ This specification follows Semantic Versioning. Breaking changes to the Intent s
 
 ---
 
+## Status
+
+This specification is in its early draft stage (v0.6.0). The primary focus is currently on validating and refining the protocol through real‑world reference implementations.
+
+We are not yet seeking active community governance. Formal RFC processes will be introduced as the specification matures toward v1.0.
+
+Feedback, adoption, and early implementations are welcome.
+
 *This document is published under the MIT License. Contributions are welcome via the [Cellrix repository](https://github.com/Jasonmilk/Cellrix).*
