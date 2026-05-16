@@ -235,4 +235,6 @@ We are not yet seeking active community governance. Formal RFC processes will be
 
 Feedback, adoption, and early implementations are welcome.
 
+---
+
 *This document is published under the MIT License. Contributions are welcome via the [Cellrix repository](https://github.com/Jasonmilk/Cellrix).*
