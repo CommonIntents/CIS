@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Version](https://img.shields.io/badge/Version-0.6.0--draft-orange.svg)]() [![Status](https://img.shields.io/badge/Status-RFC%20Draft-yellow.svg)]() [![Org](https://img.shields.io/badge/Org-CommonIntents-darkgray.svg)](https://github.com/CommonIntents)
 
-**版本**：0.6.0-草案
+**版本**：0.6.0-draft
 **状态**：征求意见（RFC）
 **编者**：Jasonmilk 与 Cellrix 开源社区
 **许可证**：Apache 2.0
