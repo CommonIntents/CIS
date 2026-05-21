@@ -1,5 +1,7 @@
 # CIS — Common Intent Specification
 
+ [![Org](https://img.shields.io/badge/Org-CommonIntents-darkgray.svg)](https://github.com/CommonIntents)
+ 
 **The native language of AI.**
 
 CIS is a device-independent intent protocol. It defines *what* AI wants to do — purely semantic, transport-agnostic, backend-agnostic. Through a local static mapping layer, a single CIS intent losslessly translates into CLI commands, GUI interactions, TUI operations, or CSS feedback.
