@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://commonintents.org/cis/spec/schema/mapping-schema.json",
+  "title": "CIS Mapping Table Schema",
+  "description": "JSON Schema for CIS intent-to-action mapping tables. Compliant implementations must pass this validation.",
+  "type": "object",
+  "required": ["version", "updated", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the mapping guide this table follows.",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-[a-zA-Z0-9.]+)?(\\+[a-zA-Z0-9.]+)?$"
+    },
+    "updated": {
+      "type": "string",
+      "description": "ISO 8601 date of last modification.",
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "description": "Ordered list of mapping entries. First match wins.",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": ["id", "match", "action"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique entry identifier. Convention: map.<domain>.<action>",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable explanation of this entry's purpose."
+        },
+        "match": {
+          "$ref": "#/$defs/match"
+        },
+        "action": {
+          "$ref": "#/$defs/action"
+        }
+      }
+    },
+
+    "match": {
+      "type": "object",
+      "required": ["intent"],
+      "additionalProperties": false,
+      "properties": {
+        "intent": {
+          "type": "string",
+          "description": "CIS intent type to match. Use '*' for catch-all fallback.",
+          "minLength": 1
+        },
+        "format": {
+          "type": "string",
+          "description": "CIB format type: json, cbor, binary. Omit to accept any format.",
+          "enum": ["json", "cbor", "binary"]
+        },
+        "ciss_required": {
+          "type": "string",
+          "description": "CISS verification requirement. Default: ignore.",
+          "enum": ["required", "optional", "ignore"],
+          "default": "ignore"
+        },
+        "cap_required": {
+          "type": "array",
+          "description": "CAP capability identifiers required to execute this intent.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "custom": {
+          "type": "object",
+          "description": "Extension point for implementation-specific match conditions.",
+          "additionalProperties": true
+        }
+      }
+    },
+
+    "action": {
+      "type": "object",
+      "required": ["type", "target"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Action type. Implementations may extend beyond this enumeration.",
+          "enum": ["render.static", "render.dynamic", "ui.action", "call.service", "custom"]
+        },
+        "target": {
+          "type": "string",
+          "description": "Action target: component name, function name, or resource address.",
+          "minLength": 1
+        },
+        "params": {
+          "type": "object",
+          "description": "Action parameters. Structure depends on action type.",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}
