@@ -375,6 +375,8 @@ CIS 是一份独立的规范。任何实现本文档所述契约的 UI 框架，
 | CIB | CommonIntents/CIB | 传输绑定、格式协商 |
 | CISS | CommonIntents/CISS | mTLS 安全传输 |
 
+**平台无关性**：CIS 协议规范本身通过内容寻址标识符（CID）发布。本白皮书的权威版本以 CID 作为唯一判定依据，不受具体网址链接限制。
+
 | 参考实现 | 仓库 | 角色 |
 |:---|:---|:---|
 | Cellrix | Jasonmilk/Cellrix | CIS/CAP 的参考实现与试验场 |
