@@ -370,6 +370,8 @@ The reference implementation of CIS is maintained as part of the Cellrix project
 
 CIS is an independent specification. Any UI framework that implements the contract described in this document is a valid CIS runtime.
 
+**Platform Independence**: The CIS protocol specification itself is published via content addressing (CID). The authoritative version of this white paper is identified by its CID, not by its specific URL.
+
 **Related Protocols and Implementations**:
 
 | Protocol | Repository | Responsibility |
