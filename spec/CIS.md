@@ -20,27 +20,21 @@ It defines only the semantic standard of "what AI wants to execute as a business
 
 CIS is a UI-independent declarative protocol that completely decouples "what can be done" (intents) from "how to trigger" (bindings and mappings), creating a standardized semantic layer for both human users and AI agents.
 
-**CIS is the native language of AI.** The reasoning core of AI is non-linguistic — when it wants to "search," that intent itself has nothing to do with any specific grammar. CIS encodes this pure, pre-linguistic intent, allowing AI to understand nothing about the underlying backend. It only needs one language — CIS. The existence of all other languages is completely transparent to AI.
 
-**CIS is digital water.** It is formless — poured into CLI, it becomes command parameters; poured into GUI, it becomes click events; poured into TUI, it becomes panel operations. It does not compete — it does not replace any existing infrastructure, merely providing an extremely thin, unified semantic layer on top of all infrastructure. It flows downward — using compile-time deterministic code translation, consuming zero AI Tokens, translated once and reused forever.
+**CIS is a Structured Intent Description Language (SIDL).** It defines a strict JSON Schema for intent messages — what fields they contain, how they are validated, and how they are routed. It is a syntactic standard, not a semantic promise.
+
+CIS does NOT:
+- Promise semantic alignment (that is the job of visualization consensus layers)
+- Prove trust (that is a multi-dimensional collaboration across the ecosystem)
+- Map intents to tool capabilities (that is the job of the orchestration layer)
 
 
 ## 2. Philosophical Foundation
 
 ### 2.1 The Native Language of AI
 
-The reasoning core of AI is non-linguistic. When a human thinks "bring that thing over," this intent, as it forms in the mind, is not Chinese, not English, not any language — it is a pure, pre-linguistic intent. The brain's language center then automatically translates it into the required form of expression.
-
-CIS is the pre-linguistic intent layer for AI. AI does not need to choose among multiple languages, nor does it need to understand the syntax of the underlying backend. It only needs one language — CIS.
-
 ### 2.2 A World Without Syntax Errors
 
-In the world of CIS, syntax errors do not exist. Only logical errors and philosophical errors exist.
-
-| Error Type | Who Errs | Layer |
-|:---|:---|:---|
-| Syntax Error | Does not exist | CIS parser directly rejects illegal intents |
-| Logical Error | AI | Reasoning layer — mistakes AI makes in its own reasoning space |
 | Philosophical Error | Protocol designer | Protocol layer — structural design flaws |
 
 CIS removes syntax from AI's list of responsibilities. AI does not need to worry about "did I say this correctly?" — it only needs to focus on "did I think this correctly?"
@@ -52,7 +46,6 @@ CIS removes syntax from AI's list of responsibilities. AI does not need to worry
 **Achieve maximum functionality with minimum force.**
 
 **How far a protocol can go depends on how much it can embrace.**
-
 
 ## 3. Conventions and Terminology
 
@@ -66,7 +59,6 @@ The key words "MUST," "MUST NOT," "REQUIRED," "SHALL," "SHALL NOT," "SHOULD," "S
 - **Backend**: The specific type of execution environment — CLI, GUI, TUI, CSS, Web, Mobile.
 - **Human-in-the-Loop (HITL)**: A security mechanism that requires explicit human confirmation before executing high-risk intents.
 
-
 ## 4. Design Principles
 
 1. **Semantically Pure, Transport-Agnostic, Backend-Agnostic**: CIS is an eternal intent language, uninvolved with transport, encryption, identity, or execution backends.
@@ -75,7 +67,6 @@ The key words "MUST," "MUST NOT," "REQUIRED," "SHALL," "SHALL NOT," "SHOULD," "S
 4. **Maximum Embrace, Minimum Exclusion**: Define only "what is correct," not "how to do it."
 5. **Zero-Dependency Ready, Progressive Enhancement**: Basic compatibility requires only HTTP services and JSON parsing.
 6. **Orthogonality**: Intents exist independent of presentation. An interface can expose 50 intents but render only 5 of them as visible elements; an authorized agent can access all 50.
-
 
 ## 5. Position in the Protocol Stack
 
@@ -110,7 +101,6 @@ CIS is the **soul layer** of the CIS/CAP protocol family. Its position in the fo
 - **CAP defines** "what AI can do, under what conditions, within what timeframe" — declaring which CIS intents an application supports through its Manifest
 - **CIB defines** "how intents are transported" — format negotiation and integrity assurance
 - **CISS defines** "who is speaking, and whether the channel is secure" — mTLS identity verification
-
 
 ## 6. Intent Registry
 
@@ -157,7 +147,6 @@ A CIS document is a JSON object representing an Intent Registry. It MUST be UTF-
 | `Select` | Select from a list | GUI, TUI, Web |
 | `Execute` | Execute a specified command | CLI |
 
-
 ## 7. Security Constraints
 
 The `security` object defines the trust requirements for an intent. If omitted, the intent is treated as `risk_level: low` and does not require human confirmation.
@@ -175,7 +164,6 @@ The `security` object defines the trust requirements for an intent. If omitted, 
 - Resume execution only upon approval
 
 **Note**: Runtime implementation details such as HITL asynchronous queues, decision state machines, and approval signature standardization are defined in the **CAP Protocol** (Capability Authentication Protocol). CIS defines only intent-level security constraint declarations, not HITL runtime implementation mechanisms.
-
 
 ## 8. Binding and Static Mapping Table
 
@@ -234,7 +222,6 @@ CIS covers all mainstream interaction paradigms:
 - **CSS (Presentation-Driven)**: CIS Intent → Style feedback. Does not execute actions, only provides visual feedback.
 - **Web / Mobile**: CIS Intent → DOM operations or native control operations
 
-
 ## 9. Parameter Schema (JSON Schema Integration)
 
 CIS adopts JSON Schema Draft 2020‑12 for parameter definition. The `parameters` field MUST be a valid JSON Schema object. Implementations MUST validate any incoming payload against this Schema before execution.
@@ -254,7 +241,6 @@ If validation fails, the implementation MUST reject the call with a descriptive 
 
 **Null Rule**: If an intent does not define a `parameters` field, the invocation request MUST NOT contain a `parameters` key. Passing `{}` or `null` when the intent declares no parameters SHALL be rejected as an invalid request.
 
-
 ## 10. Execution Lifecycle
 
 All conformant runtimes MUST implement the following lifecycle:
@@ -265,7 +251,6 @@ All conformant runtimes MUST implement the following lifecycle:
 - **Schema Validation** — The runtime validates the payload against the JSON Schema. Invalid payloads are rejected immediately (fail-fast).
 - **Security Interception** — If requires_hitl is true, execution is suspended, the status changes to PENDING_APPROVAL, and the human confirmation flow is triggered.
 - **Execution & Response** — The validated payload is passed to business logic. A deterministic response is returned.
-
 
 ## 11. Invocation Request and Response
 
@@ -326,11 +311,9 @@ If the intent declares no parameters, the parameters key MUST NOT be included:
 }
 ```
 
-
 ## 12. Extensibility
 
 Custom fields MAY be added to any CIS object. To avoid conflicts, all extension fields MUST be prefixed with `x-` (e.g., `x-telemetry-id`). Implementations MUST silently ignore unknown x- fields — this guarantees forward compatibility.
-
 
 ## 13. Relationship with Presentation Protocols and CAP
 
@@ -346,7 +329,6 @@ The presentation layer is responsible for rendering UI elements and mapping user
 
 **CIS and AI Code Generation**: AI possesses two independent capability systems — CIS + Static Mapping (for executing operations) and pre-trained knowledge (for generating code). These two are not nested; they serve different scenarios and follow different paths.
 
-
 ## 14. Conformance
 
 An implementation conforms to CIS v0.6.0 if it:
@@ -358,7 +340,6 @@ An implementation conforms to CIS v0.6.0 if it:
 - Silently ignores unknown x- fields (§12)
 
 The reference implementation provides a conformance test suite.
-
 
 ## 15. Reference Implementation
 
@@ -385,11 +366,9 @@ CIS is an independent specification. Any UI framework that implements the contra
 |:---|:---|:---|
 | Cellrix | Jasonmilk/Cellrix | Reference implementation and testbed for CIS/CAP |
 
-
 ## 16. Versioning
 
 This specification follows Semantic Versioning. Breaking changes to intent structure, invocation contracts, or security models will result in a major version increment. New optional fields, binding types, or clarifications will result in a minor version increment.
-
 
 ## Version Status
 
