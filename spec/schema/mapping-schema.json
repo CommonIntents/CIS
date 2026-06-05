@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://commonintents.org/cis/spec/schema/mapping-schema.json",
-  "title": "CIS Mapping Table Schema",
-  "description": "JSON Schema for CIS intent-to-action mapping tables. Compliant implementations must pass this validation.",
+  "$id": "https://commonintents.org/cin7/spec/schema/mapping-schema.json",
+  "title": "INTENT-7 Mapping Table Schema",
+  "description": "JSON Schema for INTENT-7 intent-to-action mapping tables. Compliant implementations must pass this validation.",
   "type": "object",
   "required": ["version", "updated", "entries"],
   "additionalProperties": false,
@@ -58,23 +58,23 @@
       "properties": {
         "intent": {
           "type": "string",
-          "description": "CIS intent type to match. Use '*' for catch-all fallback.",
+          "description": "INTENT-7 intent type to match. Use '*' for catch-all fallback.",
           "minLength": 1
         },
         "format": {
           "type": "string",
-          "description": "CIB format type: json, cbor, binary. Omit to accept any format.",
+          "description": "BIND-19 format type: json, cbor, binary. Omit to accept any format.",
           "enum": ["json", "cbor", "binary"]
         },
-        "ciss_required": {
+        "cin7s_required": {
           "type": "string",
-          "description": "CISS verification requirement. Default: ignore.",
+          "description": "INTENT-7-SECURE verification requirement. Default: ignore.",
           "enum": ["required", "optional", "ignore"],
           "default": "ignore"
         },
-        "cap_required": {
+        "cic13_required": {
           "type": "array",
-          "description": "CAP capability identifiers required to execute this intent.",
+          "description": "CAPABILITY-13 capability identifiers required to execute this intent.",
           "items": {
             "type": "string",
             "minLength": 1

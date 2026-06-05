@@ -1,11 +1,11 @@
-# Contributing to CIS
+# Contributing to INTENT-7
 
-CIS (Common Intent Specification) is the soul layer of the protocol family.
+INTENT-7 (Common Intent Specification) is the soul layer of the protocol family.
 
 ## Specification Files
 
-- English: [spec/CIS.md](spec/CIS.md)
-- Chinese: [spec/CIS.zh-CN.md](spec/CIS.zh-CN.md)
+- English: [spec/INTENT-7.md](spec/INTENT-7.md)
+- Chinese: [spec/INTENT-7.zh-CN.md](spec/INTENT-7.zh-CN.md)
 
 ## How to Propose Changes
 

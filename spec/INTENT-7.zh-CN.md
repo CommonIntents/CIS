@@ -1,6 +1,6 @@
-# CIS：通用意图规范
+# INTENT-7：通用意图规范
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Version](https://img.shields.io/badge/Version-0.6.0--draft-orange.svg)]() [![Status](https://img.shields.io/badge/Status-RFC%20Draft-yellow.svg)]() [![Org](https://img.shields.io/badge/Org-CommonIntents-darkgray.svg)](https://github.com/CommonIntents)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Version](https://img.shields.io/badge/Version-0.6.0--draft-orange.svg)]() [![Status](https://img.shields.io/badge/Status-RFC%20Draft-yellow.svg)]() [![Org](https://img.shields.io/badge/Org-CommonIntents-144-darkgray.svg)](https://github.com/CommonIntents)
 
 **版本**：0.6.0-draft
 **状态**：征求意见（RFC）
@@ -11,22 +11,22 @@
 
 ## 1. 摘要
 
-通用意图规范（Common Intents Specification，CIS）是**面向AI的结构化意图描述语言（SIDL）**——一个定义意图JSON Schema的语法标准。
+通用意图规范（CommonIntents-144 Specification，INTENT-7）是**面向AI的结构化意图描述语言（SIDL）**——一个定义意图JSON Schema的语法标准。
 
 它只定义“AI想要执行的业务动作”的语义标准，通过本地静态映射层，可无损翻译为CLI命令、GUI交互、TUI终端组件操作、CSS视觉反馈。上层AI永远使用统一接口，下层任意交互载体自由切换。
 
-CIS 是与 UI 无关的声明式协议，将“能做什么”（意图）与“如何触发”（绑定与映射）彻底解耦，为人类用户与 AI 代理双方创建一个标准化的语义层。
+INTENT-7 是与 UI 无关的声明式协议，将“能做什么”（意图）与“如何触发”（绑定与映射）彻底解耦，为人类用户与 AI 代理双方创建一个标准化的语义层。
 
 
 
 
 ## 2. 哲学基础
 
-CIS 是结构化意图描述语言（SIDL）。它定义意图的 JSON Schema 结构——意图类别、动作、目标、参数。它是句法标准，不是语义承诺。
+INTENT-7 是结构化意图描述语言（SIDL）。它定义意图的 JSON Schema 结构——意图类别、动作、目标、参数。它是句法标准，不是语义承诺。
 
 语义对齐由下游可视化共识层（如 Cellrix）和编排层（如 Anaphase）协作完成。
 
-CIS 的目标：
+INTENT-7 的目标：
 - **稳定**：Schema 变更需明确版本号
 - **可验证**：任何标准 JSON Schema 验证器均可校验句法有效性
 - **透明**：没有隐藏语义，没有隐含假设
@@ -45,7 +45,7 @@ CIS 的目标：
 
 ## 4. 设计原则
 
-1. **语义纯粹，传输无关，载体无关**：CIS 是永恒的意图语言，不涉及传输、加密、身份或执行载体
+1. **语义纯粹，传输无关，载体无关**：INTENT-7 是永恒的意图语言，不涉及传输、加密、身份或执行载体
 2. **核心极简，可选扩展**：基础词汇保持尽可能小的集合，自定义数据通过 x- 前缀字段添加
 3. **声明式激活，按需而动**：高级特性显式声明才激活，不声明即零开销
 4. **最大包容，最小排他**：只定义“什么是对的”，不规定“怎么做”
@@ -55,47 +55,47 @@ CIS 的目标：
 
 ## 5. 协议栈中的位置
 
-CIS 是 CIS/CAP 协议族的**灵魂层**。它在四层协议栈中的位置：
+INTENT-7 是 INTENT-7/CAPABILITY-13 协议族的**灵魂层**。它在四层协议栈中的位置：
 
 ```
 ┌─────────────────────────────────────────┐
-│              CIS  ← 本协议               │
+│              INTENT-7  ← 本协议               │
 │  通用意图与控制协议                      │
 │  · 纯粹的意图语义标准                    │
 │  · 传输无关，加密无关，载体无关          │
 └─────────────────────────────────────────┘
                     ▲ 语义绑定
 ┌─────────────────────────────────────────┐
-│              CIB                         │
-│  CIS/传输绑定协议                        │
+│              BIND-19                         │
+│  INTENT-7/传输绑定协议                        │
 └─────────────────────────────────────────┘
                     ▲ 当前绑定到
 ┌─────────────────────────────────────────┐
-│              CISS                        │
+│              INTENT-7-SECURE                        │
 │  安全意图与控制协议                      │
 └─────────────────────────────────────────┘
                     ▲ 承载于
 ┌─────────────────────────────────────────┐
-│              CAP                         │
+│              CAPABILITY-13                         │
 │  能力认证协议                            │
 └─────────────────────────────────────────┘
 ```
 
-- **CIS 定义** “AI 想做什么”——意图语义标准
-- **CAP 定义** “AI 能做什么，以什么条件，在什么时限内”——通过 Manifest 声明应用支持哪些 CIS 意图
-- **CIB 定义** “意图如何传输”——格式协商与完整性保障
-- **CISS 定义** “谁在说话，信道是否安全”——mTLS 身份验证
+- **INTENT-7 定义** “AI 想做什么”——意图语义标准
+- **CAPABILITY-13 定义** “AI 能做什么，以什么条件，在什么时限内”——通过 Manifest 声明应用支持哪些 INTENT-7 意图
+- **BIND-19 定义** “意图如何传输”——格式协商与完整性保障
+- **INTENT-7-SECURE 定义** “谁在说话，信道是否安全”——mTLS 身份验证
 
 
 ## 6. 意图注册表
 
-一份 CIS 文档是表示一个意图注册表（Intent Registry）的 JSON 对象。它必须（MUST）使用 UTF-8 编码。
+一份 INTENT-7 文档是表示一个意图注册表（Intent Registry）的 JSON 对象。它必须（MUST）使用 UTF-8 编码。
 
 ### 6.1. 根 Schema
 
 ```json
 {
-  "$schema": "https://cis.cellrix.org/schema/v0.6/cis.json",
+  "$schema": "https://cin7.cellrix.org/schema/v0.6/cin7.json",
   "cis_version": "0.6",
   "interface_id": "string（可选）",
   "intents": [...]
@@ -149,13 +149,13 @@ CIS 是 CIS/CAP 协议族的**灵魂层**。它在四层协议栈中的位置：
 - 等待显式批准或拒绝（或超时）
 - 仅在批准后恢复执行
 
-**注意**：HITL 的异步队列、决策状态机、审批签名标准化等运行时实现细节，参见 **CAP 协议**（能力认证协议）。CIS 只定义意图级别的安全约束声明，不定义 HITL 的运行时实现机制。
+**注意**：HITL 的异步队列、决策状态机、审批签名标准化等运行时实现细节，参见 **CAPABILITY-13 协议**（能力认证协议）。INTENT-7 只定义意图级别的安全约束声明，不定义 HITL 的运行时实现机制。
 
 
 
 ## 9. 参数 Schema（JSON Schema 集成）
 
-CIS 采用 JSON Schema Draft 2020‑12 进行参数定义。`parameters` 字段必须（MUST）是一个合法的 JSON Schema 对象。实现必须（MUST）在执行前对任何传入载荷按此 Schema 进行校验。
+INTENT-7 采用 JSON Schema Draft 2020‑12 进行参数定义。`parameters` 字段必须（MUST）是一个合法的 JSON Schema 对象。实现必须（MUST）在执行前对任何传入载荷按此 Schema 进行校验。
 
 ```json
 "parameters": {
@@ -247,27 +247,27 @@ CIS 采用 JSON Schema Draft 2020‑12 进行参数定义。`parameters` 字段�
 
 ## 12. 可扩展性
 
-自定义字段可选（MAY）添加到任何 CIS 对象。为避免冲突，所有扩展字段必须（MUST）以 `x-` 作为前缀（例如 `x-telemetry-id`）。实现必须（MUST）静默忽略未知的 x- 字段——这保证了前向兼容性。
+自定义字段可选（MAY）添加到任何 INTENT-7 对象。为避免冲突，所有扩展字段必须（MUST）以 `x-` 作为前缀（例如 `x-telemetry-id`）。实现必须（MUST）静默忽略未知的 x- 字段——这保证了前向兼容性。
 
 
-## 13. 与呈现协议及 CAP 的关系
+## 13. 与呈现协议及 CAPABILITY-13 的关系
 
-CIS 完全独立于任何呈现技术。CIS 注册表可由以下形式暴露：
+INTENT-7 完全独立于任何呈现技术。INTENT-7 注册表可由以下形式暴露：
 - 终端应用（例如基于 Cellrix 的 TUI）
 - Web 应用（通过 REST API）
 - 移动应用
 - 语音助手
 
-呈现层负责渲染 UI 元素并将用户输入映射到已绑定的意图，这超出 CIS 的范围。
+呈现层负责渲染 UI 元素并将用户输入映射到已绑定的意图，这超出 INTENT-7 的范围。
 
-CIS 与 CAP 的关系：CIS 定义“AI 想做什么”，CAP 定义“AI 能做什么，以什么条件，在什么时限内”。CAP 的 Manifest 声明应用支持哪些 CIS 意图及每个意图的安全约束。CIS 意图是 Manifest 中 actions 数组的 name 字段的语义来源。
+INTENT-7 与 CAPABILITY-13 的关系：INTENT-7 定义“AI 想做什么”，CAPABILITY-13 定义“AI 能做什么，以什么条件，在什么时限内”。CAPABILITY-13 的 Manifest 声明应用支持哪些 INTENT-7 意图及每个意图的安全约束。INTENT-7 意图是 Manifest 中 actions 数组的 name 字段的语义来源。
 
-**CIS 与 AI 代码生成**：AI 拥有两个独立的能力系统——CIS + 静态映射（执行操作）和预训练知识（生成代码）。两者不套娃，服务于不同场景，走不同路径。
+**INTENT-7 与 AI 代码生成**：AI 拥有两个独立的能力系统——INTENT-7 + 静态映射（执行操作）和预训练知识（生成代码）。两者不套娃，服务于不同场景，走不同路径。
 
 
 ## 14. 合规性
 
-一个实现若满足以下条件，即符合 CIS v0.6.0：
+一个实现若满足以下条件，即符合 INTENT-7 v0.6.0：
 - 能够解析并校验意图注册表（§6）
 - 按提供的 JSON Schema 校验调用参数（§9）
 - 对要求 HITL 的意图执行 HITL（§7）
@@ -280,28 +280,28 @@ CIS 与 CAP 的关系：CIS 定义“AI 想做什么”，CAP 定义“AI 能做
 
 ## 15. 参考实现
 
-CIS 的参考实现作为 Cellrix 项目的一部分维护。它演示了：
-- 用于解析和校验 CIS 注册表的 Python 库
+INTENT-7 的参考实现作为 Cellrix 项目的一部分维护。它演示了：
+- 用于解析和校验 INTENT-7 注册表的 Python 库
 - 用于意图调用的 HTTP 端点
 - 完整的 HITL 操作拦截器
 - 一套合规性测试套件
 
-CIS 是一份独立的规范。任何实现本文档所述契约的 UI 框架，均为合法的 CIS 运行时。
+INTENT-7 是一份独立的规范。任何实现本文档所述契约的 UI 框架，均为合法的 INTENT-7 运行时。
 
 **相关协议与实现**：
 
 | 协议 | 仓库 | 职责 |
 |:---|:---|:---|
-| CIS | CommonIntents/CIS | 通用意图语义标准（本协议） |
-| CAP | CommonIntents/CAP | 能力认证与 HITL 决策 |
-| CIB | CommonIntents/CIB | 传输绑定、格式协商 |
-| CISS | CommonIntents/CISS | mTLS 安全传输 |
+| INTENT-7 | CommonIntents-144/INTENT-7 | 通用意图语义标准（本协议） |
+| CAPABILITY-13 | CommonIntents-144/CAPABILITY-13 | 能力认证与 HITL 决策 |
+| BIND-19 | CommonIntents-144/BIND-19 | 传输绑定、格式协商 |
+| INTENT-7-SECURE | CommonIntents-144/INTENT-7-SECURE | mTLS 安全传输 |
 
-**平台无关性**：CIS 协议规范本身通过内容寻址标识符（CID）发布。本白皮书的权威版本以 CID 作为唯一判定依据，不受具体网址链接限制。
+**平台无关性**：INTENT-7 协议规范本身通过内容寻址标识符（CID）发布。本白皮书的权威版本以 CID 作为唯一判定依据，不受具体网址链接限制。
 
 | 参考实现 | 仓库 | 角色 |
 |:---|:---|:---|
-| Cellrix | Jasonmilk/Cellrix | CIS/CAP 的参考实现与试验场 |
+| Cellrix | Jasonmilk/Cellrix | INTENT-7/CAPABILITY-13 的参考实现与试验场 |
 
 
 ## 16. 版本管理
@@ -315,4 +315,4 @@ CIS 是一份独立的规范。任何实现本文档所述契约的 UI 框架，
 
 ---
 
-*本文档依据 Apache 2.0 许可证发布。欢迎通过 CommonIntents 组织仓库贡献。*
+*本文档依据 Apache 2.0 许可证发布。欢迎通过 CommonIntents-144 组织仓库贡献。*

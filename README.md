@@ -1,35 +1,35 @@
-# CIS — Common Intent Specification [![Org](https://img.shields.io/badge/Org-CommonIntents-darkgray.svg)](https://github.com/CommonIntents)
+# INTENT-7 — Common Intent Specification [![Org](https://img.shields.io/badge/Org-CommonIntents-144-darkgray.svg)](https://github.com/CommonIntents)
 
-**Structured Intent Description Language (SIDL).** CIS is a syntactic standard for AI-native intent expression. It defines a strict JSON Schema for intent messages — what fields they contain, how they are validated, and how they are routed.
+**Structured Intent Description Language (SIDL).** INTENT-7 is a syntactic standard for AI-native intent expression. It defines a strict JSON Schema for intent messages — what fields they contain, how they are validated, and how they are routed.
 
-CIS is a minimalist syntactic layer. It defines structure, not behavior. Adaptability to different backends is achieved by downstream components (orchestration, visualization), not by CIS itself.
+INTENT-7 is a minimalist syntactic layer. It defines structure, not behavior. Adaptability to different backends is achieved by downstream components (orchestration, visualization), not by INTENT-7 itself.
 
-CIS does NOT:
+INTENT-7 does NOT:
 - Promise semantic alignment (that is the job of visualization consensus layers like Cellrix)
 - Prove trust (that is a multi-dimensional collaboration across the ecosystem)
 - Map intents to tool capabilities (that is the job of the orchestration layer like Anaphase)
 
 ## Protocol Stack
 ```
-CIS ← You are here
+INTENT-7 ← You are here
   ↑
-CIB (transport binding — format negotiation & integrity)
+BIND-19 (transport binding — format negotiation & integrity)
   ↑
-CISS (optional mTLS reference implementation)
+INTENT-7-SECURE (optional mTLS reference implementation)
   ↑
-CAP (consensus confirmation — what you see is what you sign)
+CAPABILITY-13 (consensus confirmation — what you see is what you sign)
 ```
 
 ## Read the Spec
-- [CIS v0.7.0-draft](spec/CIS.md)
-- [中文版](spec/CIS.zh-CN.md)
+- [INTENT-7 v0.7.0-draft](spec/INTENT-7.md)
+- [中文版](spec/INTENT-7.zh-CN.md)
 
 ## Related
 | Protocol | Repository |
 |:---|:---|
-| CAP | [CommonIntents/CAP](https://github.com/CommonIntents/CAP) |
-| CIB | [CommonIntents/CIB](https://github.com/CommonIntents/CIB) |
-| CISS | [CommonIntents/CISS](https://github.com/CommonIntents/CISS) |
+| CAPABILITY-13 | [CommonIntents-144/CAPABILITY-13](https://github.com/CommonIntents/CAPABILITY-13) |
+| BIND-19 | [CommonIntents-144/BIND-19](https://github.com/CommonIntents/BIND-19) |
+| INTENT-7-SECURE | [CommonIntents-144/INTENT-7-SECURE](https://github.com/CommonIntents/INTENT-7-SECURE) |
 
 ## License
 Apache 2.0 — see [LICENSE](LICENSE).

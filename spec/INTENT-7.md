@@ -1,9 +1,9 @@
-# CIS: Common Intents Specification
+# INTENT-7: CommonIntents-144 Specification
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Version](https://img.shields.io/badge/Version-0.6.0--draft-orange.svg)]()
 [![Status](https://img.shields.io/badge/Status-RFC%20Draft-yellow.svg)]()
-[![Org](https://img.shields.io/badge/Org-CommonIntents-darkgray.svg)](https://github.com/CommonIntents)
+[![Org](https://img.shields.io/badge/Org-CommonIntents-144-darkgray.svg)](https://github.com/CommonIntents)
 
 **Version**: 0.6.0-draft
 **Status**: Request for Comments (RFC)
@@ -14,16 +14,16 @@
 
 ## 1. Abstract
 
-The Common Intents Specification (CIS) is a **device-independent intent protocol for AI**.
+The CommonIntents-144 Specification (INTENT-7) is a **device-independent intent protocol for AI**.
 
 It defines only the semantic standard of "what AI wants to execute as a business action." Through a local static mapping layer, it losslessly translates into CLI commands, GUI interactions, TUI terminal component operations, and CSS visual feedback. The upper-layer AI always uses a unified interface, while the lower-layer interaction backends can be freely switched.
 
-CIS is a UI-independent declarative protocol that completely decouples "what can be done" (intents) from "how to trigger" (bindings and mappings), creating a standardized semantic layer for both human users and AI agents.
+INTENT-7 is a UI-independent declarative protocol that completely decouples "what can be done" (intents) from "how to trigger" (bindings and mappings), creating a standardized semantic layer for both human users and AI agents.
 
 
-**CIS is a Structured Intent Description Language (SIDL).** It defines a strict JSON Schema for intent messages — what fields they contain, how they are validated, and how they are routed. It is a syntactic standard, not a semantic promise.
+**INTENT-7 is a Structured Intent Description Language (SIDL).** It defines a strict JSON Schema for intent messages — what fields they contain, how they are validated, and how they are routed. It is a syntactic standard, not a semantic promise.
 
-CIS does NOT:
+INTENT-7 does NOT:
 - Promise semantic alignment (that is the job of visualization consensus layers)
 - Prove trust (that is a multi-dimensional collaboration across the ecosystem)
 - Map intents to tool capabilities (that is the job of the orchestration layer)
@@ -37,7 +37,7 @@ CIS does NOT:
 
 | Philosophical Error | Protocol designer | Protocol layer — structural design flaws |
 
-CIS removes syntax from AI's list of responsibilities. AI does not need to worry about "did I say this correctly?" — it only needs to focus on "did I think this correctly?"
+INTENT-7 removes syntax from AI's list of responsibilities. AI does not need to worry about "did I say this correctly?" — it only needs to focus on "did I think this correctly?"
 
 ### 2.3 Core Beliefs
 
@@ -55,13 +55,13 @@ The key words "MUST," "MUST NOT," "REQUIRED," "SHALL," "SHALL NOT," "SHOULD," "S
 - **Intent**: A discrete, invocable operation defined by an id, description, optional parameters, and security constraints.
 - **Agent**: Any client that invokes an intent — a human through a UI, or an AI through an API.
 - **Binding**: A declaration that a specific intent is anchored to a particular element in the presentation layer.
-- **Static Mapping Table**: A set of purely local code, determined at compile-time or load-time, that losslessly translates CIS intents into native operations for each backend. Zero AI involvement, zero Token consumption.
+- **Static Mapping Table**: A set of purely local code, determined at compile-time or load-time, that losslessly translates INTENT-7 intents into native operations for each backend. Zero AI involvement, zero Token consumption.
 - **Backend**: The specific type of execution environment — CLI, GUI, TUI, CSS, Web, Mobile.
 - **Human-in-the-Loop (HITL)**: A security mechanism that requires explicit human confirmation before executing high-risk intents.
 
 ## 4. Design Principles
 
-1. **Semantically Pure, Transport-Agnostic, Backend-Agnostic**: CIS is an eternal intent language, uninvolved with transport, encryption, identity, or execution backends.
+1. **Semantically Pure, Transport-Agnostic, Backend-Agnostic**: INTENT-7 is an eternal intent language, uninvolved with transport, encryption, identity, or execution backends.
 2. **Minimal Core, Optional Extensions**: Keep the base vocabulary as small as possible; custom data is added through `x-` prefixed fields.
 3. **Declarative Activation, On-Demand Execution**: Advanced features are activated only when explicitly declared; not declared means zero overhead.
 4. **Maximum Embrace, Minimum Exclusion**: Define only "what is correct," not "how to do it."
@@ -70,11 +70,11 @@ The key words "MUST," "MUST NOT," "REQUIRED," "SHALL," "SHALL NOT," "SHOULD," "S
 
 ## 5. Position in the Protocol Stack
 
-CIS is the **soul layer** of the CIS/CAP protocol family. Its position in the four-layer protocol stack:
+INTENT-7 is the **soul layer** of the INTENT-7/CAPABILITY-13 protocol family. Its position in the four-layer protocol stack:
 
 ```
 ┌─────────────────────────────────────────┐
-│              CIS  ← This Protocol        │
+│              INTENT-7  ← This Protocol        │
 │  Common Intent Specification             │
 │  · Pure intent semantic standard         │
 │  · Transport-agnostic, crypto-agnostic   │
@@ -82,35 +82,35 @@ CIS is the **soul layer** of the CIS/CAP protocol family. Its position in the fo
 └─────────────────────────────────────────┘
                     ▲ Semantic Binding
 ┌─────────────────────────────────────────┐
-│              CIB                         │
-│  CIS/Transport Binding Protocol          │
+│              BIND-19                         │
+│  INTENT-7/Transport Binding Protocol          │
 └─────────────────────────────────────────┘
                     ▲ Currently Bound To
 ┌─────────────────────────────────────────┐
-│              CISS                        │
+│              INTENT-7-SECURE                        │
 │  Secure Intent & Control Protocol        │
 └─────────────────────────────────────────┘
                     ▲ Carried By
 ┌─────────────────────────────────────────┐
-│              CAP                         │
+│              CAPABILITY-13                         │
 │  Capability Authentication Protocol      │
 └─────────────────────────────────────────┘
 ```
 
-- **CIS defines** "what AI wants to do" — intent semantic standards
-- **CAP defines** "what AI can do, under what conditions, within what timeframe" — declaring which CIS intents an application supports through its Manifest
-- **CIB defines** "how intents are transported" — format negotiation and integrity assurance
-- **CISS defines** "who is speaking, and whether the channel is secure" — mTLS identity verification
+- **INTENT-7 defines** "what AI wants to do" — intent semantic standards
+- **CAPABILITY-13 defines** "what AI can do, under what conditions, within what timeframe" — declaring which INTENT-7 intents an application supports through its Manifest
+- **BIND-19 defines** "how intents are transported" — format negotiation and integrity assurance
+- **INTENT-7-SECURE defines** "who is speaking, and whether the channel is secure" — mTLS identity verification
 
 ## 6. Intent Registry
 
-A CIS document is a JSON object representing an Intent Registry. It MUST be UTF-8 encoded.
+A INTENT-7 document is a JSON object representing an Intent Registry. It MUST be UTF-8 encoded.
 
 ### 6.1. Root Schema
 
 ```json
 {
-  "$schema": "https://cis.cellrix.org/schema/v0.6/cis.json",
+  "$schema": "https://cin7.cellrix.org/schema/v0.6/cin7.json",
   "cis_version": "0.6",
   "interface_id": "string (optional)",
   "intents": [...]
@@ -163,7 +163,7 @@ The `security` object defines the trust requirements for an intent. If omitted, 
 - Wait for explicit approval or rejection (or timeout)
 - Resume execution only upon approval
 
-**Note**: Runtime implementation details such as HITL asynchronous queues, decision state machines, and approval signature standardization are defined in the **CAP Protocol** (Capability Authentication Protocol). CIS defines only intent-level security constraint declarations, not HITL runtime implementation mechanisms.
+**Note**: Runtime implementation details such as HITL asynchronous queues, decision state machines, and approval signature standardization are defined in the **CAPABILITY-13 Protocol** (Capability Authentication Protocol). INTENT-7 defines only intent-level security constraint declarations, not HITL runtime implementation mechanisms.
 
 ## 8. Binding and Static Mapping Table
 
@@ -178,13 +178,13 @@ Binding Object:
 | type | string | Yes | MUST be `"ui_element"` |
 | target_id | string | Yes | Identifier of the element in the presentation layer |
 
-The presentation layer is entirely responsible for how a bound element is triggered — keyboard, mouse, touch, voice, or any other input modality. CIS does not define input modalities.
+The presentation layer is entirely responsible for how a bound element is triggered — keyboard, mouse, touch, voice, or any other input modality. INTENT-7 does not define input modalities.
 
 ### 8.2. Static Mapping Table
 
-**The static mapping table is the key mechanism by which CIS achieves ultimate efficiency.**
+**The static mapping table is the key mechanism by which INTENT-7 achieves ultimate efficiency.**
 
-It is a set of purely local code, determined at compile-time or load-time, that translates CIS intents into native operations for each backend. This translation process involves no AI reasoning and consumes no Tokens. Each backend maintains its own mapping table, completely decoupled from others.
+It is a set of purely local code, determined at compile-time or load-time, that translates INTENT-7 intents into native operations for each backend. This translation process involves no AI reasoning and consumes no Tokens. Each backend maintains its own mapping table, completely decoupled from others.
 
 ```
 AI always outputs only: Search
@@ -199,32 +199,32 @@ AI always outputs only: Search
 
 **Why does adding one more layer actually improve efficiency?**
 
-Data flow path: `AI Reasoning → CIS Intent → Static Mapping → CLI Command → Execution`
+Data flow path: `AI Reasoning → INTENT-7 Intent → Static Mapping → CLI Command → Execution`
 
-Compared to AI directly generating CLI commands, the path adds a "CIS Intent → Static Mapping" layer. However, the computational cost of this layer (nanosecond-level local code matching) is far lower than the Token consumption required for AI to handle environment adaptation during reasoning. Extremely cheap local computation is exchanged for extremely expensive AI context overhead.
+Compared to AI directly generating CLI commands, the path adds a "INTENT-7 Intent → Static Mapping" layer. However, the computational cost of this layer (nanosecond-level local code matching) is far lower than the Token consumption required for AI to handle environment adaptation during reasoning. Extremely cheap local computation is exchanged for extremely expensive AI context overhead.
 
-| Dimension | AI Directly Generates CLI | AI Generates CIS + Static Mapping |
+| Dimension | AI Directly Generates CLI | AI Generates INTENT-7 + Static Mapping |
 |:---|:---|:---|
 | Context AI must understand | OS, Shell, command syntax | None, AI only sees unified intents |
 | Token Consumption | High (environment info occupies context) | Low (intent itself only) |
 | Cross-platform migration | AI must re-reason | Same `ListDir` output, mapping table auto-translates |
 | Local computation overhead | Zero | One match (< 1μs) |
 
-**Maintenance of Static Mapping Tables**: The mapping relationship between each CIS intent and its native operation is precise, enumerable, and one-to-one. Similar backends can generate mapping code in batches through templates. Each backend's mapping table is maintained by the person most familiar with that backend, and all mapping tables evolve independently without interdependence.
+**Maintenance of Static Mapping Tables**: The mapping relationship between each INTENT-7 intent and its native operation is precise, enumerable, and one-to-one. Similar backends can generate mapping code in batches through templates. Each backend's mapping table is maintained by the person most familiar with that backend, and all mapping tables evolve independently without interdependence.
 
 ### 8.3. Backend Mapping Completeness
 
-CIS covers all mainstream interaction paradigms:
+INTENT-7 covers all mainstream interaction paradigms:
 
-- **CLI (Command-Driven)**: CIS Intent → CLI command and parameters
-- **GUI (Component-Driven)**: CIS Intent → Interface component location and simulated operation
-- **TUI (Terminal GUI)**: CIS Intent → Terminal panel and cursor operation. TUI is essentially a component-driven interface in the terminal; its mapping logic is closer to GUI, not CLI.
-- **CSS (Presentation-Driven)**: CIS Intent → Style feedback. Does not execute actions, only provides visual feedback.
-- **Web / Mobile**: CIS Intent → DOM operations or native control operations
+- **CLI (Command-Driven)**: INTENT-7 Intent → CLI command and parameters
+- **GUI (Component-Driven)**: INTENT-7 Intent → Interface component location and simulated operation
+- **TUI (Terminal GUI)**: INTENT-7 Intent → Terminal panel and cursor operation. TUI is essentially a component-driven interface in the terminal; its mapping logic is closer to GUI, not CLI.
+- **CSS (Presentation-Driven)**: INTENT-7 Intent → Style feedback. Does not execute actions, only provides visual feedback.
+- **Web / Mobile**: INTENT-7 Intent → DOM operations or native control operations
 
 ## 9. Parameter Schema (JSON Schema Integration)
 
-CIS adopts JSON Schema Draft 2020‑12 for parameter definition. The `parameters` field MUST be a valid JSON Schema object. Implementations MUST validate any incoming payload against this Schema before execution.
+INTENT-7 adopts JSON Schema Draft 2020‑12 for parameter definition. The `parameters` field MUST be a valid JSON Schema object. Implementations MUST validate any incoming payload against this Schema before execution.
 
 ```json
 "parameters": {
@@ -313,25 +313,25 @@ If the intent declares no parameters, the parameters key MUST NOT be included:
 
 ## 12. Extensibility
 
-Custom fields MAY be added to any CIS object. To avoid conflicts, all extension fields MUST be prefixed with `x-` (e.g., `x-telemetry-id`). Implementations MUST silently ignore unknown x- fields — this guarantees forward compatibility.
+Custom fields MAY be added to any INTENT-7 object. To avoid conflicts, all extension fields MUST be prefixed with `x-` (e.g., `x-telemetry-id`). Implementations MUST silently ignore unknown x- fields — this guarantees forward compatibility.
 
-## 13. Relationship with Presentation Protocols and CAP
+## 13. Relationship with Presentation Protocols and CAPABILITY-13
 
-CIS is completely independent of any presentation technology. A CIS registry can be exposed by:
+INTENT-7 is completely independent of any presentation technology. A INTENT-7 registry can be exposed by:
 - Terminal applications (e.g., Cellrix-based TUI)
 - Web applications (via REST API)
 - Mobile applications
 - Voice assistants
 
-The presentation layer is responsible for rendering UI elements and mapping user input to bound intents, which is beyond the scope of CIS.
+The presentation layer is responsible for rendering UI elements and mapping user input to bound intents, which is beyond the scope of INTENT-7.
 
-**Relationship between CIS and CAP**: CIS defines "what AI wants to do"; CAP defines "what AI can do, under what conditions, within what timeframe." CAP's Manifest declares which CIS intents an application supports and the security constraints for each intent. CIS intents are the semantic source of the `name` field in the `actions` array of the Manifest.
+**Relationship between INTENT-7 and CAPABILITY-13**: INTENT-7 defines "what AI wants to do"; CAPABILITY-13 defines "what AI can do, under what conditions, within what timeframe." CAPABILITY-13's Manifest declares which INTENT-7 intents an application supports and the security constraints for each intent. INTENT-7 intents are the semantic source of the `name` field in the `actions` array of the Manifest.
 
-**CIS and AI Code Generation**: AI possesses two independent capability systems — CIS + Static Mapping (for executing operations) and pre-trained knowledge (for generating code). These two are not nested; they serve different scenarios and follow different paths.
+**INTENT-7 and AI Code Generation**: AI possesses two independent capability systems — INTENT-7 + Static Mapping (for executing operations) and pre-trained knowledge (for generating code). These two are not nested; they serve different scenarios and follow different paths.
 
 ## 14. Conformance
 
-An implementation conforms to CIS v0.6.0 if it:
+An implementation conforms to INTENT-7 v0.6.0 if it:
 - Can parse and validate an intent registry (§6)
 - Validates invocation parameters against the provided JSON Schema (§9)
 - Enforces HITL for intents that require it (§7)
@@ -343,28 +343,28 @@ The reference implementation provides a conformance test suite.
 
 ## 15. Reference Implementation
 
-The reference implementation of CIS is maintained as part of the Cellrix project. It demonstrates:
-- A Python library for parsing and validating CIS registries
+The reference implementation of INTENT-7 is maintained as part of the Cellrix project. It demonstrates:
+- A Python library for parsing and validating INTENT-7 registries
 - HTTP endpoints for intent invocation
 - A complete HITL operation interceptor
 - A conformance test suite
 
-CIS is an independent specification. Any UI framework that implements the contract described in this document is a valid CIS runtime.
+INTENT-7 is an independent specification. Any UI framework that implements the contract described in this document is a valid INTENT-7 runtime.
 
-**Platform Independence**: The CIS protocol specification itself is published via content addressing (CID). The authoritative version of this white paper is identified by its CID, not by its specific URL.
+**Platform Independence**: The INTENT-7 protocol specification itself is published via content addressing (CID). The authoritative version of this white paper is identified by its CID, not by its specific URL.
 
 **Related Protocols and Implementations**:
 
 | Protocol | Repository | Responsibility |
 |:---|:---|:---|
-| CIS | CommonIntents/CIS | Common Intent Semantic Standard (this protocol) |
-| CAP | CommonIntents/CAP | Capability Authentication and HITL Decisions |
-| CIB | CommonIntents/CIB | Transport Binding and Format Negotiation |
-| CISS | CommonIntents/CISS | mTLS Secure Transport |
+| INTENT-7 | CommonIntents-144/INTENT-7 | Common Intent Semantic Standard (this protocol) |
+| CAPABILITY-13 | CommonIntents-144/CAPABILITY-13 | Capability Authentication and HITL Decisions |
+| BIND-19 | CommonIntents-144/BIND-19 | Transport Binding and Format Negotiation |
+| INTENT-7-SECURE | CommonIntents-144/INTENT-7-SECURE | mTLS Secure Transport |
 
 | Reference Implementation | Repository | Role |
 |:---|:---|:---|
-| Cellrix | Jasonmilk/Cellrix | Reference implementation and testbed for CIS/CAP |
+| Cellrix | Jasonmilk/Cellrix | Reference implementation and testbed for INTENT-7/CAPABILITY-13 |
 
 ## 16. Versioning
 
@@ -376,4 +376,4 @@ This specification is currently in the early draft stage (v0.6.0). The core work
 
 ---
 
-*This document is released under the Apache 2.0 license. Contributions are welcome through the CommonIntents organization repository.*
+*This document is released under the Apache 2.0 license. Contributions are welcome through the CommonIntents-144 organization repository.*
