@@ -1,4 +1,4 @@
-# INTENT-7 — Common Intent Specification [![Org](https://img.shields.io/badge/Org-CommonIntents-144-darkgray.svg)](https://github.com/CommonIntents)
+# INTENT-7 — Common Intent Specification [![Org](https://img.shields.io/badge/Org-CommonIntents--144-darkgray.svg)](https://github.com/CommonIntents)
 
 **Structured Intent Description Language (SIDL).** INTENT-7 is a syntactic standard for AI-native intent expression. It defines a strict JSON Schema for intent messages — what fields they contain, how they are validated, and how they are routed.
 
