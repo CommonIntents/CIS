@@ -21,15 +21,15 @@ CAPABILITY-13 (consensus confirmation — what you see is what you sign)
 ```
 
 ## Read the Spec
-- [INTENT-7 v0.7.0-draft](spec/INTENT-7.md)
+- [INTENT-7 v1.0.0-RFC-4](spec/INTENT-7.md)
 - [中文版](spec/INTENT-7.zh-CN.md)
 
 ## Related
 | Protocol | Repository |
 |:---|:---|
-| CAPABILITY-13 | [CommonIntents-144/CAPABILITY-13](https://github.com/CommonIntents/CAPABILITY-13) |
-| BIND-19 | [CommonIntents-144/BIND-19](https://github.com/CommonIntents/BIND-19) |
-| INTENT-7-SECURE | [CommonIntents-144/INTENT-7-SECURE](https://github.com/CommonIntents/INTENT-7-SECURE) |
+| CAPABILITY-13 | [CommonIntents/CAPABILITY-13](https://github.com/CommonIntents/CAPABILITY-13) |
+| BIND-19 | [CommonIntents/BIND-19](https://github.com/CommonIntents/BIND-19) |
+| INTENT-7-SECURE | [CommonIntents/INTENT-7-SECURE](https://github.com/CommonIntents/INTENT-7-SECURE) |
 
 ## License
 Apache 2.0 — see [LICENSE](LICENSE).
