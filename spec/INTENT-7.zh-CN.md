@@ -1,4 +1,5 @@
 # INTENT-7：结构化意图描述语言（SIDL）规范（v1.0.0-RFC-4）
+> © 2026 CommonIntents. 依据 CC BY-ND 4.0 许可（https://creativecommons.org/licenses/by-nd/4.0/）。
 
 ## 1. 引言与设计目标
 本规范定义了 **INTENT-7**，即 **CommonIntents-144（CI-144）** 协议族中的结构化意图描述语言（SIDL）。
